@@ -23,7 +23,7 @@ const AddModal = ({
 
   const body = (
     <div className="modal-component">
-      <h2 id="simple-modal-title">Contact Form</h2>
+      <h2 id="simple-modal-title">Ajouter une publication</h2>
       <div id="simple-modal-description">
         <form onSubmit={handleSubmit} noValidate autoComplete="off">
           <TextField

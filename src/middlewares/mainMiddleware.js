@@ -4,6 +4,7 @@ import {
   LOG_IN,
   ADD_POST,
   GET_POSTS,
+  UPDATE_POST_STATUS,
   setToken,
   setPosts,
   setCompanyId,
@@ -63,6 +64,27 @@ const mainMiddleware = (store) => (next) => (action) => {
         companiesIDs: [
           companyID,
         ],
+      }, {
+        headers: { 'X-SK-Authorization': `Bearer ${token}` },
+      }).then(() => {
+        store.dispatch(getPosts());
+      }).catch((err) => {
+        console.log('err', err);
+      });
+
+      next(action);
+      break;
+    }
+
+    case UPDATE_POST_STATUS: {
+      const { postID, value } = action;
+      const { token } = store.getState().main;
+
+      axios.put(`${apiBaseUrl}/api/v1/publication/set-status`, {
+        publicationsIDs: [
+          postID,
+        ],
+        status: value,
       }, {
         headers: { 'X-SK-Authorization': `Bearer ${token}` },
       }).then(() => {

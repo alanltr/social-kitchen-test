@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 // on importe le composant de présentation
 import Posts from 'src/components/Posts';
 
-import { getPosts } from 'src/actions';
+import { getPosts, updatePostStatus } from 'src/actions';
 
 // === mapStateToProps
 const mapStateToProps = (state) => ({
@@ -15,6 +15,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   getPosts: () => {
     dispatch(getPosts());
+  },
+  updatePostStatus: (e) => {
+    dispatch(updatePostStatus(e.currentTarget.name, e.currentTarget.value));
   },
 });
 

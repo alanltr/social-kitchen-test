@@ -7,6 +7,7 @@ export const SET_CATEGORY_TO_DISPLAY = 'SET_CATEGORY_TO_DISPLAY';
 export const ADD_POST = 'ADD_POST';
 export const TOGGLE_IS_OPEN_MODAL = 'TOGGLE_IS_OPEN_MODAL';
 export const CHANGE_FIELD = 'CHANGE_FIELD';
+export const UPDATE_POST_STATUS = 'UPDATE_POST_STATUS';
 
 export const logIn = () => ({
   type: LOG_IN,
@@ -48,4 +49,10 @@ export const changeField = (newValue, name) => ({
   type: CHANGE_FIELD,
   newValue,
   name,
+});
+
+export const updatePostStatus = (postID, value) => ({
+  type: UPDATE_POST_STATUS,
+  postID,
+  value,
 });

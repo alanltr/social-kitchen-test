@@ -1,97 +1,22 @@
 // == Import npm
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // == Import
 import './posts.scss';
 
+import Post from './Post';
+
 // == Composant
-const Posts = () => (
+const Posts = ({ posts }) => (
   <div className="posts-component">
-    <div className="post-container">
-      <div className="post-image">
-        <img src="" alt="" />
-      </div>
-      <div className="post-content">
-        <div className="description">
-          Lorem Lorem Lorem Lorem
-        </div>
-        <div className="creation">
-          Le 22 juin 2021
-        </div>
-      </div>
-    </div>
-
-    <div className="post-container">
-      <div className="post-image">
-        <img src="" alt="" />
-      </div>
-      <div className="post-content">
-        <div className="description">
-          Lorem Lorem Lorem Lorem
-        </div>
-        <div className="creation">
-          Le 22 juin 2021
-        </div>
-      </div>
-    </div>
-
-    <div className="post-container">
-      <div className="post-image">
-        <img src="" alt="" />
-      </div>
-      <div className="post-content">
-        <div className="description">
-          Lorem Lorem Lorem Lorem
-        </div>
-        <div className="creation">
-          Le 22 juin 2021
-        </div>
-      </div>
-    </div>
-
-    <div className="post-container">
-      <div className="post-image">
-        <img src="" alt="" />
-      </div>
-      <div className="post-content">
-        <div className="description">
-          Lorem Lorem Lorem Lorem
-        </div>
-        <div className="creation">
-          Le 22 juin 2021
-        </div>
-      </div>
-    </div>
-
-    <div className="post-container">
-      <div className="post-image">
-        <img src="" alt="" />
-      </div>
-      <div className="post-content">
-        <div className="description">
-          Lorem Lorem Lorem Lorem
-        </div>
-        <div className="creation">
-          Le 22 juin 2021
-        </div>
-      </div>
-    </div>
-
-    <div className="post-container">
-      <div className="post-image">
-        <img src="" alt="" />
-      </div>
-      <div className="post-content">
-        <div className="description">
-          Lorem Lorem Lorem Lorem
-        </div>
-        <div className="creation">
-          Le 22 juin 2021
-        </div>
-      </div>
-    </div>
+    {posts.map((post) => <Post key={post.ID} {...post} />)}
   </div>
 );
+
+Posts.propTypes = {
+  posts: PropTypes.array.isRequired,
+};
 
 // == Export
 export default Posts;

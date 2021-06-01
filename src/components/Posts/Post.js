@@ -1,11 +1,11 @@
 // == Import npm
 import React from 'react';
-import Moment from 'react-moment';
 import PropTypes from 'prop-types';
 import IconButton from '@material-ui/core/IconButton';
 import CheckIcon from '@material-ui/icons/Check';
 import ClearIcon from '@material-ui/icons/Clear';
-
+import moment from 'moment';
+// import 'moment/locale/fr';
 
 // == Composant
 const Post = ({
@@ -16,6 +16,7 @@ const Post = ({
   ID,
   updatePostStatus,
 }) => {
+  console.log(moment(publishAt).locale('fr').format('dddd D MMMM YYYY HH:mm'));
   const handleClick = ((e) => {
     console.log(e.currentTarget.name);
     console.log(e.currentTarget.value);
@@ -60,12 +61,17 @@ const Post = ({
           </div>
         )}
         <div className="creation">
-          <Moment locale="fr" unix>{publishAt}</Moment>
+          {/* Si post en attente alors on donne la date précise
+              sinon on donne la date partir du moment présent */}
+          {status === 'pending'
+            ? moment(publishAt).locale('fr').format('dddd D MMMM YYYY HH:mm')
+            : moment(publishAt).locale('fr').fromNow()}
         </div>
       </div>
     </div>
   );
 };
+
 Post.propTypes = {
   caption: PropTypes.string.isRequired,
   publishAt: PropTypes.number.isRequired,

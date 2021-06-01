@@ -27,21 +27,45 @@
 
     .post-content {
       height: 50%;
-      .description {
+      .middle-div {
+        display: flex;
         height: 80%;
-        overflow-y: auto;
-        &::-webkit-scrollbar {
-          // Valeur non prise en compte, présente uniqument pour que ::-webkit-scrollbar-thumb soit détecté
+        .button-div {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          min-width: 48px;
+          width: 48px;
+
+          .valid {
+            color: blue;
+          }
+          .refuse {
+            color: #ae3737;
+          }
+        }
+
+        .description {
+          margin: auto;
+          overflow-y: auto;
           height: 100%;
+          padding: 6px;
+
+          &::-webkit-scrollbar {
+            // Valeur non prise en compte, présente uniqument pour que ::-webkit-scrollbar-thumb soit détecté
+            height: 100%;
+          }
+          &::-webkit-scrollbar-thumb {
+            background-color: black;
+            border: 1px transparent groove;
+            border-radius: 5em;
+          }
+          &::-webkit-scrollbar-track {
+            background: transparent;
+          }
         }
-        &::-webkit-scrollbar-thumb {
-          background-color: black;
-          border: 1px transparent groove;
-          border-radius: 5em;
-        }
-        &::-webkit-scrollbar-track {
-          background: transparent;
-        }
+
+
       }
       .creation {
         height: 20%;

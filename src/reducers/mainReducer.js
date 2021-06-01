@@ -14,7 +14,7 @@ const initialState = {
   posts: [],
   category: 'pending',
   // AddModal
-  isOpenAddModal: true,
+  isOpenAddModal: false,
   caption: '',
   image: '',
 };

@@ -1,0 +1,28 @@
+.posts-component {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  height: 100%;
+
+  .post-container {
+    background-color: red;
+    height: 350px;
+    width: 21%;
+    .post-image {
+      height: 50%;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .post-content {
+      .description {
+
+      }
+      .creation {
+
+      }
+    }
+  }
+}

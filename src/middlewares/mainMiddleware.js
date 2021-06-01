@@ -9,6 +9,8 @@ import {
   setPosts,
   setCompanyId,
   getPosts,
+  resetForm,
+  toggleIsOpenModal,
 } from 'src/actions';
 
 const apiBaseUrl = 'https://app-bf00fd5a-fca9-4375-8cdb-44d461521b8f.cleverapps.io';
@@ -68,6 +70,8 @@ const mainMiddleware = (store) => (next) => (action) => {
         headers: { 'X-SK-Authorization': `Bearer ${token}` },
       }).then(() => {
         store.dispatch(getPosts());
+        store.dispatch(resetForm());
+        store.dispatch(toggleIsOpenModal());
       }).catch((err) => {
         console.log('err', err);
       });

@@ -5,6 +5,7 @@ import {
   SET_CATEGORY_TO_DISPLAY,
   TOGGLE_IS_OPEN_MODAL,
   CHANGE_FIELD,
+  RESET_FORM,
 } from 'src/actions';
 
 const initialState = {
@@ -55,6 +56,13 @@ function profileReducer(state = initialState, action = {}) {
       return {
         ...state,
         [action.name]: action.newValue,
+      };
+
+    case RESET_FORM:
+      return {
+        ...state,
+        caption: '',
+        image: '',
       };
 
     default:

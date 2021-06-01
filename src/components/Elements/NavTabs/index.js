@@ -15,7 +15,6 @@ import './navtabs.scss';
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
-    maxWidth: 500,
   },
 });
 
@@ -34,7 +33,7 @@ const NavTabs = ({ setCategoryToDisplay }) => {
 
   return (
     <div className="navtabs-component">
-      <Paper square className={classes.root}>
+      <Paper className={classes.root}>
         <Tabs
           value={value}
           onChange={handleChange}
@@ -42,6 +41,7 @@ const NavTabs = ({ setCategoryToDisplay }) => {
           indicatorColor="primary"
           textColor="primary"
           aria-label="choix du type de publication"
+          centered
         >
           <Tab onClick={handleClick} name="pending" icon={<ScheduleIcon />} aria-label="en attente" />
           <Tab onClick={handleClick} name="validate" icon={<CheckCircleOutlineIcon />} aria-label="validées" />

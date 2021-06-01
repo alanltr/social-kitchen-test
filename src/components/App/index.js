@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import Posts from 'src/containers/Posts';
 import NavTabs from 'src/containers/NavTabs';
+import AddPost from 'src/components/Elements/AddPost';
 
 // == Import
 import './styles.scss';
@@ -16,6 +17,7 @@ const App = ({ logIn }) => {
 
   return (
     <div className="app">
+      <AddPost />
       <NavTabs />
       <Posts />
     </div>

@@ -1,0 +1,19 @@
+.app {
+  display: grid;
+  grid-template-columns: 25% 25% 50%;
+  grid-template-rows: 10% auto;
+  grid-template-areas: 
+  " . addpost tabs "
+  " posts posts posts "
+  ;
+  margin: 1em 0;
+  .addpost-component {
+    grid-area: addpost;
+  }
+  .navtabs-component {
+    grid-area: tabs;
+  }
+  .posts-component {
+    grid-area: posts;
+  }
+}

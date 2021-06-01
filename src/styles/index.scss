@@ -1,12 +1,27 @@
 @use 'reset';
 @use 'vars';
 
-body {
-  font-family: sans-serif;
-  height: 100vh;
-  background: linear-gradient(150deg,#fff,#a5ecf6 17%,#fff 50%,#a5ecf6 80%);
+@font-face {
+  font-family: 'Roboto';
+  src: url('../assets/fonts/Roboto-Regular.ttf');
+  font-display: swap;
 }
 
-#root, .app {
-  height: 100%;
+body {
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(150deg,#fff,#a5ecf6 17%,#fff 50%,#a5ecf6 80%);
+  overflow-y: hidden;
+  #root {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+  
+  
+    .app {
+      max-width: 1400px;
+      height: 100%;
+    }
+  }
 }
+

@@ -50,6 +50,7 @@
           overflow-y: auto;
           height: 100%;
           padding: 6px;
+          font-style: italic;
 
           &::-webkit-scrollbar {
             // Valeur non prise en compte, présente uniqument pour que ::-webkit-scrollbar-thumb soit détecté

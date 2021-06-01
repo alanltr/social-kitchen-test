@@ -2,8 +2,9 @@ import axios from 'axios';
 
 import {
   LOG_IN,
-  setToken,
+  ADD_POST,
   GET_POSTS,
+  setToken,
   setPosts,
   setCompanyId,
   getPosts,
@@ -40,6 +41,32 @@ const mainMiddleware = (store) => (next) => (action) => {
         headers: { 'X-SK-Authorization': `Bearer ${token}` },
       }).then((res) => {
         store.dispatch(setPosts(res.data));
+      }).catch((err) => {
+        console.log('err', err);
+      });
+
+      next(action);
+      break;
+    }
+
+    case ADD_POST: {
+      const {
+        image,
+        caption,
+        companyID,
+        token,
+      } = store.getState().main;
+
+      axios.post(`${apiBaseUrl}/api/v1/publication/`, {
+        image,
+        caption,
+        companiesIDs: [
+          companyID,
+        ],
+      }, {
+        headers: { 'X-SK-Authorization': `Bearer ${token}` },
+      }).then(() => {
+        store.dispatch(getPosts());
       }).catch((err) => {
         console.log('err', err);
       });

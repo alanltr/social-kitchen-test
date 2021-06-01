@@ -2,11 +2,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import logo from 'src/assets/logo.png';
+
 import Posts from 'src/containers/Posts';
 import NavTabs from 'src/containers/NavTabs';
-import AddPost from 'src/components/Elements/AddPost';
+import AddPost from 'src/containers/AddPost';
+import AddModal from 'src/containers/AddModal';
 
-import logo from 'src/assets/logo.png';
 
 // == Import
 import './styles.scss';
@@ -25,6 +27,7 @@ const App = ({ logIn }) => {
       <AddPost />
       <NavTabs />
       <Posts />
+      <AddModal />
     </div>
   );
 };
@@ -32,5 +35,6 @@ const App = ({ logIn }) => {
 App.propTypes = {
   logIn: PropTypes.func.isRequired,
 };
+
 // == Export
 export default App;

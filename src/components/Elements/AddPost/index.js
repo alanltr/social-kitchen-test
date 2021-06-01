@@ -8,12 +8,18 @@ import Paper from '@material-ui/core/Paper';
 import './addPost.scss';
 
 // == Composant
-const AddPost = () => (
-  <div className="addpost-component">
-    <Paper>
-      <Tab name="pending" icon={<AddIcon />} aria-label="en attente" />
-    </Paper>
-  </div>
-);
+const AddPost = ({ toggleIsOpenModal }) => {
+  const handleClick = ((e) => {
+    toggleIsOpenModal();
+  });
+
+  return (
+    <div className="addpost-component">
+      <Paper>
+        <Tab onClick={handleClick} name="pending" icon={<AddIcon />} aria-label="ajouter une publication" />
+      </Paper>
+    </div>
+  );
+};
 // == Export
 export default AddPost;

@@ -3,6 +3,8 @@ import {
   SET_POSTS,
   SET_COMPANY_ID,
   SET_CATEGORY_TO_DISPLAY,
+  TOGGLE_IS_OPEN_MODAL,
+  CHANGE_FIELD,
 } from 'src/actions';
 
 const initialState = {
@@ -11,6 +13,10 @@ const initialState = {
   // Posts
   posts: [],
   category: 'pending',
+  // AddModal
+  isOpenAddModal: true,
+  caption: '',
+  image: '',
 };
 
 function profileReducer(state = initialState, action = {}) {
@@ -37,6 +43,18 @@ function profileReducer(state = initialState, action = {}) {
       return {
         ...state,
         category: action.category,
+      };
+
+    case TOGGLE_IS_OPEN_MODAL:
+      return {
+        ...state,
+        isOpenAddModal: !state.isOpenAddModal,
+      };
+
+    case CHANGE_FIELD:
+      return {
+        ...state,
+        [action.name]: action.newValue,
       };
 
     default:

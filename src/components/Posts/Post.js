@@ -5,7 +5,6 @@ import IconButton from '@material-ui/core/IconButton';
 import CheckIcon from '@material-ui/icons/Check';
 import ClearIcon from '@material-ui/icons/Clear';
 import moment from 'moment';
-// import 'moment/locale/fr';
 
 // == Composant
 const Post = ({
@@ -15,62 +14,54 @@ const Post = ({
   status,
   ID,
   updatePostStatus,
-}) => {
-  console.log(moment(publishAt).locale('fr').format('dddd D MMMM YYYY HH:mm'));
-  const handleClick = ((e) => {
-    console.log(e.currentTarget.name);
-    console.log(e.currentTarget.value);
-  });
-
-  return (
-    <div className="post-container">
-      <div className="post-image">
-        <img src={image} alt="" />
-      </div>
-      <div className="post-content">
-        {status === 'pending' && (
-          <div className="middle-div">
-            <div className="button-div">
-              <IconButton
-                name={ID}
-                value="validate"
-                onClick={updatePostStatus}
-                aria-label="validation"
-              >
-                <CheckIcon className="valid" />
-              </IconButton>
-              <IconButton
-                name={ID}
-                value="refused"
-                onClick={updatePostStatus}
-                aria-label="refus"
-              >
-                <ClearIcon className="refuse" />
-              </IconButton>
-            </div>
-            <div className="description">
-              {caption}
-            </div>
+}) => (
+  <div className="post-container">
+    <div className="post-image">
+      <img src={image} alt="" />
+    </div>
+    <div className="post-content">
+      {status === 'pending' && (
+        <div className="middle-div">
+          <div className="button-div">
+            <IconButton
+              name={ID}
+              value="validate"
+              onClick={updatePostStatus}
+              aria-label="validation"
+            >
+              <CheckIcon className="valid" />
+            </IconButton>
+            <IconButton
+              name={ID}
+              value="refused"
+              onClick={updatePostStatus}
+              aria-label="refus"
+            >
+              <ClearIcon className="refuse" />
+            </IconButton>
           </div>
-        )}
-        {status !== 'pending' && (
-          <div className="middle-div">
-            <div className="description">
-              {caption}
-            </div>
+          <div className="description">
+            {caption}
           </div>
-        )}
-        <div className="creation">
-          {/* Si post en attente alors on donne la date précise
-              sinon on donne la date partir du moment présent */}
-          {status === 'pending'
-            ? moment(publishAt).locale('fr').format('dddd D MMMM YYYY HH:mm')
-            : moment(publishAt).locale('fr').fromNow()}
         </div>
+      )}
+      {status !== 'pending' && (
+        <div className="middle-div">
+          <div className="description">
+            {caption}
+          </div>
+        </div>
+      )}
+      <div className="creation">
+        {/* Si post en attente alors on donne la date précise
+            sinon on donne la date partir du moment présent */}
+        {status === 'pending'
+          ? moment(publishAt).locale('fr').format('dddd D MMMM YYYY HH:mm')
+          : moment(publishAt).locale('fr').fromNow()}
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 Post.propTypes = {
   caption: PropTypes.string.isRequired,

@@ -3,6 +3,7 @@ export const SET_TOKEN = 'SET_TOKEN';
 export const SET_POSTS = 'SET_POSTS';
 export const GET_POSTS = 'GET_POSTS';
 export const SET_COMPANY_ID = 'SET_COMPANY_ID';
+export const SET_CATEGORY_TO_DISPLAY = 'SET_CATEGORY_TO_DISPLAY';
 
 export const logIn = () => ({
   type: LOG_IN,
@@ -25,4 +26,9 @@ export const getPosts = () => ({
 export const setCompanyId = (id) => ({
   type: SET_COMPANY_ID,
   id,
+});
+
+export const setCategoryToDisplay = (category) => ({
+  type: SET_CATEGORY_TO_DISPLAY,
+  category,
 });

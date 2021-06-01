@@ -2,6 +2,7 @@ import {
   SET_TOKEN,
   SET_POSTS,
   SET_COMPANY_ID,
+  SET_CATEGORY_TO_DISPLAY,
 } from 'src/actions';
 
 const initialState = {
@@ -9,6 +10,7 @@ const initialState = {
   companyID: '',
   // Posts
   posts: [],
+  category: 'pending',
 };
 
 function profileReducer(state = initialState, action = {}) {
@@ -29,6 +31,12 @@ function profileReducer(state = initialState, action = {}) {
       return {
         ...state,
         companyID: action.id,
+      };
+
+    case SET_CATEGORY_TO_DISPLAY:
+      return {
+        ...state,
+        category: action.category,
       };
 
     default:

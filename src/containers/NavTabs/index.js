@@ -1,22 +1,21 @@
 import { connect } from 'react-redux';
 
 // on importe le composant de présentation
-import Posts from 'src/components/Posts';
+import NavTabs from 'src/components/Elements/NavTabs';
 
-import { getPosts } from 'src/actions';
+import { setCategoryToDisplay } from 'src/actions';
 
 // === mapStateToProps
 const mapStateToProps = (state) => ({
-  posts: state.main.posts,
-  category: state.main.category,
+
 });
 
 // === mapDispatchToProps
 const mapDispatchToProps = (dispatch) => ({
-  getPosts: () => {
-    dispatch(getPosts());
+  setCategoryToDisplay: (category) => {
+    dispatch(setCategoryToDisplay(category));
   },
 });
 
 // === création de l'assistant
-export default connect(mapStateToProps, mapDispatchToProps)(Posts);
+export default connect(mapStateToProps, mapDispatchToProps)(NavTabs);

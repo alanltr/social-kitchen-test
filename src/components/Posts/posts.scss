@@ -3,7 +3,7 @@
   justify-content: space-around;
   flex-wrap: wrap;
   height: 100%;
-  overflow-y: auto;
+  // overflow-y: auto;
 
   .post-container {
     // background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.301), rgba(255, 255, 255, 0.103));
@@ -30,7 +30,18 @@
       .description {
         height: 80%;
         overflow-y: auto;
-
+        &::-webkit-scrollbar {
+          // Valeur non prise en compte, présente uniqument pour que ::-webkit-scrollbar-thumb soit détecté
+          height: 100%;
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: black;
+          border: 1px transparent groove;
+          border-radius: 5em;
+        }
+        &::-webkit-scrollbar-track {
+          background: transparent;
+        }
       }
       .creation {
         height: 20%;

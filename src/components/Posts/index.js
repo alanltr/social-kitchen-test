@@ -8,14 +8,19 @@ import './posts.scss';
 import Post from './Post';
 
 // == Composant
-const Posts = ({ posts }) => (
+const Posts = ({ posts, category }) => (
   <div className="posts-component">
-    {posts.map((post) => <Post key={post.ID} {...post} />)}
+    {posts.map((post) => (
+      category === post.status && (
+        <Post key={post.ID} {...post} />
+      )
+    ))}
   </div>
 );
 
 Posts.propTypes = {
   posts: PropTypes.array.isRequired,
+  category: PropTypes.string.isRequired,
 };
 
 // == Export

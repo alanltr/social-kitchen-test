@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Posts from 'src/containers/Posts';
+import NavTabs from 'src/containers/NavTabs';
 
 // == Import
 import './styles.scss';
@@ -15,6 +16,7 @@ const App = ({ logIn }) => {
 
   return (
     <div className="app">
+      <NavTabs />
       <Posts />
     </div>
   );

@@ -16,6 +16,7 @@ const Posts = ({ posts, category, updatePostStatus }) => (
           key={post.ID}
           {...post}
           updatePostStatus={updatePostStatus}
+          img={post.img}
         />
       )
     ))}

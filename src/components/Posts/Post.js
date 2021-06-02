@@ -10,14 +10,14 @@ import moment from 'moment';
 const Post = ({
   caption,
   publishAt,
-  image,
   status,
   ID,
   updatePostStatus,
+  img,
 }) => (
   <div className="post-container">
     <div className="post-image">
-      <img src={image} alt="" />
+      <img alt=" " src={img} />
     </div>
     <div className="post-content">
       {status === 'pending' && (
@@ -66,10 +66,14 @@ const Post = ({
 Post.propTypes = {
   caption: PropTypes.string.isRequired,
   publishAt: PropTypes.number.isRequired,
-  image: PropTypes.string.isRequired,
   status: PropTypes.string.isRequired,
   ID: PropTypes.string.isRequired,
   updatePostStatus: PropTypes.func.isRequired,
+  img: PropTypes.string,
+};
+
+Post.defaultProps = {
+  img: '',
 };
 
 // == Export

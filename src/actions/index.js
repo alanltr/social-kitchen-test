@@ -9,6 +9,7 @@ export const TOGGLE_IS_OPEN_MODAL = 'TOGGLE_IS_OPEN_MODAL';
 export const CHANGE_FIELD = 'CHANGE_FIELD';
 export const UPDATE_POST_STATUS = 'UPDATE_POST_STATUS';
 export const RESET_FORM = 'RESET_FORM';
+export const GET_IMAGE = 'GET_IMAGE';
 
 export const logIn = () => ({
   type: LOG_IN,
@@ -60,4 +61,10 @@ export const updatePostStatus = (postID, value) => ({
 
 export const resetForm = () => ({
   type: RESET_FORM,
+});
+
+export const getImage = (width, height) => ({
+  type: GET_IMAGE,
+  width,
+  height,
 });

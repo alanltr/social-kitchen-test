@@ -7,6 +7,9 @@ import {
   CHANGE_FIELD,
   RESET_FORM,
   SET_IS_LOADING_APP,
+  SET_IS_A_SUCCESS,
+  SET_SUCCESS_MESSAGE,
+  TOGGLE_IS_OPEN_SNACKBAR,
 } from 'src/actions';
 
 const initialState = {
@@ -22,6 +25,10 @@ const initialState = {
   // Je met une valeur par defaut a image pour arreter de rentrer
   // de mauvaises valeurs (temporaire evidemment)
   image: 'qloAH4d0ezCtePA_E9mu1-1622367101445',
+  // PersonalSnackbar
+  successMessage: 'reducers',
+  isASuccess: true,
+  isOpenSnackbar: false,
 };
 
 function profileReducer(state = initialState, action = {}) {
@@ -66,7 +73,7 @@ function profileReducer(state = initialState, action = {}) {
       return {
         ...state,
         caption: '',
-        image: '',
+        // image: '',
       };
 
     case SET_IS_LOADING_APP:
@@ -75,6 +82,23 @@ function profileReducer(state = initialState, action = {}) {
         isLoadingApp: action.bool,
       };
 
+    case SET_IS_A_SUCCESS:
+      return {
+        ...state,
+        isASuccess: action.bool,
+      };
+
+    case SET_SUCCESS_MESSAGE:
+      return {
+        ...state,
+        successMessage: action.newValue,
+      };
+
+    case TOGGLE_IS_OPEN_SNACKBAR:
+      return {
+        ...state,
+        isOpenSnackbar: action.bool,
+      };
     default:
       return state;
   }

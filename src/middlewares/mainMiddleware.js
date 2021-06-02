@@ -14,6 +14,9 @@ import {
   toggleIsOpenModal,
   getImage,
   setIsLoadingApp,
+  toggleIsOpenSnackbar,
+  setIsASuccess,
+  setSuccessMessage,
 } from 'src/actions';
 
 const apiBaseUrl = 'https://app-bf00fd5a-fca9-4375-8cdb-44d461521b8f.cleverapps.io';
@@ -66,6 +69,15 @@ const mainMiddleware = (store) => (next) => (action) => {
         token,
       } = store.getState().main;
 
+      if (caption === '') {
+        store.dispatch(setSuccessMessage('La description ne peut être vide'));
+        store.dispatch(setIsASuccess(false));
+        store.dispatch(toggleIsOpenSnackbar(true));
+
+        next(action);
+        break;
+      }
+
       axios.post(`${apiBaseUrl}/api/v1/publication/`, {
         image,
         caption,
@@ -80,6 +92,10 @@ const mainMiddleware = (store) => (next) => (action) => {
         // Puis on reset le formulaire et on enleve la modal
         store.dispatch(resetForm());
         store.dispatch(toggleIsOpenModal());
+        // Et on affiche la notif de succès
+        store.dispatch(setSuccessMessage('Votre publication a bien été enregistrée'));
+        store.dispatch(setIsASuccess(true));
+        store.dispatch(toggleIsOpenSnackbar(true));
       }).catch((err) => {
         console.log('err', err);
       });
@@ -102,6 +118,16 @@ const mainMiddleware = (store) => (next) => (action) => {
       }).then(() => {
         // On charge les posts pour actualiser l'action
         store.dispatch(getPosts());
+
+        // En fonction du bouton cliqué on ajuste le success message
+        if (value === 'validate') {
+          store.dispatch(setSuccessMessage('Publication validée'));
+        }
+        else {
+          store.dispatch(setSuccessMessage('Publication refusée'));
+        }
+        store.dispatch(setIsASuccess(true));
+        store.dispatch(toggleIsOpenSnackbar(true));
       }).catch((err) => {
         console.log('err', err);
       });

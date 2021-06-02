@@ -8,6 +8,7 @@ import Posts from 'src/containers/Posts';
 import NavTabs from 'src/containers/NavTabs';
 import AddPost from 'src/containers/AddPost';
 import AddModal from 'src/containers/AddModal';
+import PersonalSnackbar from 'src/containers/PersonalSnackbar';
 import Loader from 'src/components/Elements/Loader';
 
 
@@ -32,6 +33,7 @@ const App = ({ logIn, isLoadingApp }) => {
           <NavTabs />
           <Posts />
           <AddModal />
+          <PersonalSnackbar />
         </>
       )}
     </div>

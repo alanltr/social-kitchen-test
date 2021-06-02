@@ -11,6 +11,9 @@ export const UPDATE_POST_STATUS = 'UPDATE_POST_STATUS';
 export const RESET_FORM = 'RESET_FORM';
 export const GET_IMAGE = 'GET_IMAGE';
 export const SET_IS_LOADING_APP = 'SET_IS_LOADING_APP';
+export const TOGGLE_IS_OPEN_SNACKBAR = 'TOGGLE_IS_OPEN_SNACKBAR';
+export const SET_SUCCESS_MESSAGE = 'SET_SUCCESS_MESSAGE';
+export const SET_IS_A_SUCCESS = 'SET_IS_A_SUCCESS';
 
 export const logIn = () => ({
   type: LOG_IN,
@@ -73,4 +76,19 @@ export const getImage = (width, height) => ({
 export const setIsLoadingApp = (bool) => ({
   type: SET_IS_LOADING_APP,
   bool,
+});
+
+export const toggleIsOpenSnackbar = (bool) => ({
+  type: TOGGLE_IS_OPEN_SNACKBAR,
+  bool,
+});
+
+export const setIsASuccess = (bool) => ({
+  type: SET_IS_A_SUCCESS,
+  bool,
+});
+
+export const setSuccessMessage = (newValue) => ({
+  type: SET_SUCCESS_MESSAGE,
+  newValue,
 });

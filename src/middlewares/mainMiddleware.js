@@ -13,6 +13,7 @@ import {
   resetForm,
   toggleIsOpenModal,
   getImage,
+  updatePostStatus,
 } from 'src/actions';
 
 const apiBaseUrl = 'https://app-bf00fd5a-fca9-4375-8cdb-44d461521b8f.cleverapps.io';
@@ -113,6 +114,14 @@ const mainMiddleware = (store) => (next) => (action) => {
       const result = [];
 
       posts.forEach((post) => {
+        // J'ai rentré de mauvaises d'image valeurs lors de la création de 3 publications ce qui
+        // provoque 3 erreurs 500 car ID de l'image inexistant
+        // Je met cette condition car je ne peux modifier l'image d'une publication et je ne peux
+        // pas la supprimer non plus. Ca permet d'avoir la console propre et aucun process bloquant
+        if (post.image.length !== 35) {
+          return;
+        }
+
         axios.get(`${apiBaseUrl}/api/v1/image/${post.image}/?jwt=${token}&height=${height}&width=${width}`, {
           headers: { 'X-SK-Authorization': `Bearer ${token}` },
         }).then((res) => {
@@ -121,14 +130,27 @@ const mainMiddleware = (store) => (next) => (action) => {
             ...post,
             img: res.config.url,
           });
-          // TODO enlever le -2 quand les 2 images non chargées (car mauvais id) seront parties
+
           // Quand on arrive à la fin de nos resultats on set notre tableau
-          if (result.length === posts.length - 2) {
+          // ! Le -3 est la car l'image 3 publications provoquent une 500 et
+          // ! je n'ai aucun moyen de modifier via le endpoint PUT
+          // ! A noter que rajouter une publication non valide empecherait de
+          // ! rentrer dans la condition
+          if (result.length === posts.length - 3) {
             store.dispatch(setPosts(result));
           }
         }).catch((err) => {
           console.log('err', err);
         });
+
+        // Je profite de la boucle qui recupere les images pour checker si la date de publi
+        // est passée ou non. L'api renvoit une 404 car 'published' n'est pas dans les termes
+        // autorisés de ce endpoint
+        // A voir si c'est bien de cette manière que l'actualisation se fait, ou via une api
+        // tierce
+        // ? if (Date.now() > post.publishAt && post.status === 'validate') {
+        // ?   store.dispatch(updatePostStatus(post.ID, 'published'));
+        // ? }
       });
 
       next(action);

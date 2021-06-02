@@ -1,11 +1,9 @@
 @use 'src/styles/vars';
 
 .loader-container {
-  display: flex;
-  height: 100%;
-  background: transparent;
-  align-self: center;
-  margin-top: 300px;
+  position: absolute;
+  bottom: 30%;
+  right: 40%;
   @mixin obj($w,$h,$bg) {
     width: $w;
     height: $h;

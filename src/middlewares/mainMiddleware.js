@@ -13,7 +13,7 @@ import {
   resetForm,
   toggleIsOpenModal,
   getImage,
-  updatePostStatus,
+  setIsLoadingApp,
 } from 'src/actions';
 
 const apiBaseUrl = 'https://app-bf00fd5a-fca9-4375-8cdb-44d461521b8f.cleverapps.io';
@@ -46,6 +46,8 @@ const mainMiddleware = (store) => (next) => (action) => {
       axios.get(`${apiBaseUrl}/api/v1/publication/?companiesIDs=${companyID}`, {
         headers: { 'X-SK-Authorization': `Bearer ${token}` },
       }).then((res) => {
+        // TODO pour régler le pb du loader qui est unset trop tot il faudrait voir ici
+        // TODO on pourrait passer res.data en payload de getImage et l'exploiter la bas
         store.dispatch(setPosts(res.data));
         store.dispatch(getImage(300, 175));
       }).catch((err) => {
@@ -136,8 +138,9 @@ const mainMiddleware = (store) => (next) => (action) => {
           // ! je n'ai aucun moyen de modifier via le endpoint PUT
           // ! A noter que rajouter une publication non valide empecherait de
           // ! rentrer dans la condition
-          if (result.length === posts.length - 3) {
+          if (result.length === posts.length - 4) {
             store.dispatch(setPosts(result));
+            store.dispatch(setIsLoadingApp(false));
           }
         }).catch((err) => {
           console.log('err', err);

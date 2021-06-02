@@ -7,7 +7,7 @@ import { logIn } from 'src/actions';
 
 // === mapStateToProps
 const mapStateToProps = (state) => ({
-
+  isLoadingApp: state.main.isLoadingApp,
 });
 
 // === mapDispatchToProps

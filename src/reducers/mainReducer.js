@@ -6,18 +6,22 @@ import {
   TOGGLE_IS_OPEN_MODAL,
   CHANGE_FIELD,
   RESET_FORM,
+  SET_IS_LOADING_APP,
 } from 'src/actions';
 
 const initialState = {
   token: '',
   companyID: '',
+  isLoadingApp: true,
   // Posts
   posts: [],
   category: 'pending',
   // AddModal
   isOpenAddModal: false,
   caption: '',
-  image: '',
+  // Je met une valeur par defaut a image pour arreter de rentrer
+  // de mauvaises valeurs (temporaire evidemment)
+  image: 'qloAH4d0ezCtePA_E9mu1-1622367101445',
 };
 
 function profileReducer(state = initialState, action = {}) {
@@ -63,6 +67,12 @@ function profileReducer(state = initialState, action = {}) {
         ...state,
         caption: '',
         image: '',
+      };
+
+    case SET_IS_LOADING_APP:
+      return {
+        ...state,
+        isLoadingApp: action.bool,
       };
 
     default:

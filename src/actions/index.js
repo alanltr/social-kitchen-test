@@ -10,6 +10,7 @@ export const CHANGE_FIELD = 'CHANGE_FIELD';
 export const UPDATE_POST_STATUS = 'UPDATE_POST_STATUS';
 export const RESET_FORM = 'RESET_FORM';
 export const GET_IMAGE = 'GET_IMAGE';
+export const SET_IS_LOADING_APP = 'SET_IS_LOADING_APP';
 
 export const logIn = () => ({
   type: LOG_IN,
@@ -69,4 +70,7 @@ export const getImage = (width, height) => ({
   height,
 });
 
-
+export const setIsLoadingApp = (bool) => ({
+  type: SET_IS_LOADING_APP,
+  bool,
+});

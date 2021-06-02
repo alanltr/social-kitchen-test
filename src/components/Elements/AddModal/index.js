@@ -27,12 +27,13 @@ const AddModal = ({
       <div id="simple-modal-description">
         <form onSubmit={handleSubmit} noValidate autoComplete="off">
           <TextField
-            type="text"
             name="caption"
             value={caption}
             onChange={changeField}
-            id="filled-secondary"
+            id="filled-multiline-static"
             label="Description"
+            multiline
+            rows={5}
             variant="filled"
           />
           <TextField

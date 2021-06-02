@@ -37,7 +37,6 @@ const NavTabs = ({ setCategoryToDisplay }) => {
         <Tabs
           value={value}
           onChange={handleChange}
-          variant="fullWidth"
           indicatorColor="primary"
           textColor="primary"
           aria-label="choix du type de publication"
